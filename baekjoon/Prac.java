@@ -1,7 +1,23 @@
 package baekjoon;
 
+import java.util.*;
+
 public class Prac {
 	public static void main(String[] args) {
+        String str = "abcde";
+        List<Character> list = new ArrayList<>();
+        for(int i=0 ; i<str.length() ; i++) {
+        	list.add(str.charAt(i));
+        }
+
+        // reverse
+        Collections.reverse(list);
+
+        for(char c : list) {
+        	System.out.print(c);
+        }
+		
+		/*
 		double pie = 3.1415926535;
 		double d = 287.189372;
 		
@@ -20,6 +36,6 @@ public class Prac {
  		System.out.println(String.format("%.2f",  Math.floor(d*10)/10.0));
  		System.out.println();
 		System.out.println(String.format("%.3f", Math.floor(pie*100)/100.0)); // 3.140
-		
+		*/
 	}
 }
