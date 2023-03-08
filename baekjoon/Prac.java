@@ -1,9 +1,28 @@
 package baekjoon;
-
+import java.io.*;
 import java.util.*;
 
 public class Prac {
-	public static void main(String[] args) {
+	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) throws IOException {
+		StringTokenizer st = new StringTokenizer(br.readLine(),"-");
+		int result = Integer.MAX_VALUE;
+		while(st.hasMoreTokens()) {
+			int num = 0;
+			StringTokenizer st2 = new StringTokenizer(st.nextToken(),"+");
+			
+			while(st2.hasMoreTokens()) {
+				num += Integer.parseInt(st2.nextToken());
+			}
+			if(result == Integer.MAX_VALUE) {
+				result = num;
+			}else {
+				result -= num; 
+			}
+		}
+		System.out.println(result);
+		
+		/*
         String str = "abcde";
         List<Character> list = new ArrayList<>();
         for(int i=0 ; i<str.length() ; i++) {
@@ -17,7 +36,8 @@ public class Prac {
         	System.out.print(c);
         }
 		
-		/*
+		------------------------------------------
+		
 		double pie = 3.1415926535;
 		double d = 287.189372;
 		
