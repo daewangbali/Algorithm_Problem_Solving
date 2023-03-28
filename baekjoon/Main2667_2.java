@@ -1,8 +1,8 @@
-package algorithm;
+package baekjoon;
 import java.io.*;
 import java.util.*;
 
-public class Main2667 {
+public class Main2667_2 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringBuilder sb = new StringBuilder();
 	static int N;
