@@ -1,0 +1,24 @@
+import java.util.*;
+
+class Solution {
+    public int solution(String s) {
+        int answer = 0;
+        Stack<Integer> stack = new Stack<>();
+        StringTokenizer st = new StringTokenizer(s);
+        
+        while(st.hasMoreTokens()){
+            String s1 = st.nextToken();
+            if(s1.equals("Z")){
+                stack.pop();
+            }else{
+                stack.push(Integer.parseInt(s1));    
+            }
+        }
+        
+        while(!stack.isEmpty()){
+            answer += stack.pop();
+        }
+        
+        return answer;
+    }
+}
