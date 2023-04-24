@@ -1,0 +1,45 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(String[] park, String[] routes) {
+        char[][] parkmap = new char[park.length][park[0].length()];
+        int[] start = new int[2];
+        for(int i=0 ; i<park.length ; i++){
+            for(int j=0 ; j<park[i].length() ; j++){
+                parkmap[i][j] = park[i].charAt(j);
+                if(parkmap[i][j] == 'S'){
+                    start[0] = i;
+                    start[1] = j;
+                }
+            }
+        }
+        Map<Character, int[]> map = new HashMap<>();
+        map.put('E',new int[] {0,1});
+        map.put('W',new int[] {0,-1});
+        map.put('S',new int[] {1,0});
+        map.put('N',new int[] {-1,0});
+
+        for(int i=0 ; i<routes.length ; i++){
+            char c = routes[i].charAt(0);
+            int[] m = map.get(c);
+            boolean flag = false;
+            int nx = start[0];
+            int ny = start[1];
+            for(int j=0 ; j<routes[i].charAt(2)-'0' ; j++){
+                nx += m[0];
+                ny += m[1];
+                if(nx < 0 || ny < 0 || nx >= parkmap.length || ny >= park[0].length() || parkmap[nx][ny] == 'X')
+                    flag = true;
+            }
+            nx = start[0] + (m[0] * (routes[i].charAt(2)-'0'));
+            ny = start[1] + (m[1] * (routes[i].charAt(2)-'0'));
+            if(nx < 0 || ny < 0 || nx >= parkmap.length || ny >= park[0].length() || flag == true ){
+                    continue;
+            }
+            start[0] = nx;
+            start[1] = ny;
+
+        }
+        return start;
+    }
+}
