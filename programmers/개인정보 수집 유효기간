@@ -1,0 +1,47 @@
+import java.util.*;
+
+class Solution {
+    public List<Integer> solution(String today, String[] terms, String[] privacies) {
+        List<Integer> list = new ArrayList<>();
+        //terms 정보 담기
+        Map<String,Integer> map = new HashMap<>();
+        for(int i=0 ; i<terms.length ; i++){
+            StringTokenizer st = new StringTokenizer(terms[i]);
+            String s = st.nextToken();
+            int n = Integer.parseInt(st.nextToken());
+            map.put(s,n);
+        }
+        //오늘 날짜
+        int tyear = Integer.parseInt(today.substring(0,4));
+        int tmonth = Integer.parseInt(today.substring(5,7));
+        int tday = Integer.parseInt(today.substring(8,10));
+
+        for(int i=0 ; i<privacies.length ; i++){
+            //유효기간 만들기
+            String type = String.valueOf(privacies[i].charAt(11));
+            int year = Integer.parseInt(privacies[i].substring(0,4));
+            int month = Integer.parseInt(privacies[i].substring(5,7)) + map.get(type);
+            int day = Integer.parseInt(privacies[i].substring(8,10)) - 1;
+
+            if(day == 0){
+                day = 28;
+                month -= 1;
+            }
+            if(month > 12){
+                year += (month / 12);
+                month %= 12;
+                if(month == 0){
+                    month = 12;
+                    year--;
+                }
+            }
+
+            if(tyear < year) continue;
+            if(tyear == year && tmonth < month) continue;
+            if(tyear == year && tmonth == month && tday <= day) continue;
+
+            list.add(i+1);
+        }
+        return list;
+    }
+}
