@@ -1,0 +1,28 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] ingredient) {
+        int answer = 0;
+        String s = "";
+        Stack<Integer> stack = new Stack<>();
+        for(int i=0 ; i<ingredient.length ; i++){
+            stack.push(ingredient[i]);
+            if(stack.size() >= 4){
+                int ingred1 = stack.get(stack.size()-4);
+                int ingred2 = stack.get(stack.size()-3);
+                int ingred3 = stack.get(stack.size()-2);
+                int ingred4 = stack.get(stack.size()-1);
+
+                if(ingred1 == 1 && ingred2 == 2 && ingred3 == 3 && ingred4 == 1){
+                    answer++;
+                    stack.pop();
+                    stack.pop();
+                    stack.pop();
+                    stack.pop();
+                }
+            }
+        }
+
+        return answer;
+    }
+}
