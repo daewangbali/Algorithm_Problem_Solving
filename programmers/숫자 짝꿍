@@ -1,0 +1,31 @@
+class Solution {
+    public String solution(String X, String Y) {
+        StringBuilder answer = new StringBuilder();
+        int[] xarr = new int[10];
+        int[] yarr = new int[10];
+
+        for(int i=0 ; i<X.length() ; i++){
+            xarr[X.charAt(i) - '0']++;
+        }
+        for(int i=0 ; i<Y.length() ; i++){
+            yarr[Y.charAt(i) - '0']++;
+        }
+
+        for(int i=9 ; i>=0 ; i--){
+            if(i == 0){
+                if(Math.min(xarr[0], yarr[0]) > 0 && answer.length() == 0){
+                    answer.append("0");
+                    break;
+                }
+            }
+            for(int j=0 ; j < Math.min(xarr[i], yarr[i]) ; j++){
+                answer.append(i);
+            }
+        }
+
+        if(answer.toString().equals(""))
+            answer.append("-1");
+
+        return answer.toString();
+    }
+}
