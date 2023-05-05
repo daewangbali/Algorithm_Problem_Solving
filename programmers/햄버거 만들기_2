@@ -1,0 +1,18 @@
+class Solution {
+    public int solution(int[] ingredient) {
+        int[] arr = new int[ingredient.length];
+        int sp = 0;
+        int answer = 0;
+        for (int i : ingredient) {
+            arr[sp++] = i;
+            if (sp >= 4 && stack[sp - 1] == 1
+                && arr[sp - 2] == 3
+                && arr[sp - 3] == 2
+                && arr[sp - 4] == 1) {
+                sp -= 4;
+                answer++;
+            }
+        }
+        return answer;
+    }
+}
