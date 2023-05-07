@@ -1,0 +1,40 @@
+import java.util.*;
+
+class Solution {
+    public String solution(String[] survey, int[] choices) {
+        StringBuilder answer = new StringBuilder();
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('R',0);
+        map.put('T',0);
+        map.put('C',0);
+        map.put('F',0);
+        map.put('J',0);
+        map.put('M',0);
+        map.put('A',0);
+        map.put('N',0);
+
+        for(int i=0 ; i<survey.length ; i++){
+            char c = 'a';
+            int choice = 0;
+            if(choices[i] < 4){
+                c = survey[i].charAt(0);
+                choice = 4 - choices[i];
+            }else{
+                c = survey[i].charAt(1);
+                choice = choices[i] - 4;
+            }
+            map.put(c,map.get(c) + choice);
+        }
+
+        char[][] type = {{'R','T'},{'C','F'},{'J','M'},{'A','N'}};
+        for(int i=0 ; i<4 ; i++){
+            if(map.get(type[i][0]) < map.get(type[i][1])){
+                answer.append(type[i][1]);
+            }else{
+                answer.append(type[i][0]);
+            }
+        }
+
+        return answer.toString();
+    }
+}
