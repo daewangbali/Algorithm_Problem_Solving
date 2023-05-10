@@ -1,0 +1,52 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(String[] id_list, String[] report, int k) {
+        int[] answer = new int[id_list.length];
+        
+        //id 별 고유 번호 부여해주기 0~
+        Map<String, Integer> idmap = new HashMap<>();
+        for(int i=0 ; i<id_list.length ; i++){
+            idmap.put(id_list[i],i);
+        }
+        
+        //신고 횟수 저장할 map
+        Map<Integer, Integer> reportCnt = new HashMap<>();
+        for(int i=0 ; i<id_list.length ; i++){
+            reportCnt.put(idmap.get(id_list[i]),0);
+        }
+        
+        //누구 신고 했는지 저장할 배열
+        int[][] reportIdArr = new int[id_list.length][id_list.length];
+        
+        //신고 기록
+        for(int i=0 ; i<report.length ; i++){
+            String[] repot = report[i].split(" ");
+            int reid = idmap.get(repot[0]);
+            int repotedid = idmap.get(repot[1]);
+            if(reportIdArr[reid][repotedid] == 0){
+                reportIdArr[reid][repotedid] = 1;
+                reportCnt.put(repotedid,reportCnt.get(repotedid)+1);
+            }
+            
+        }
+        
+        //정지된 ID list에 담기
+        List<Integer> suspensionList = new ArrayList<>();;
+        for(int key : reportCnt.keySet()){
+            if(reportCnt.get(key) >= k){
+                suspensionList.add(key);
+            }
+        }
+        
+        //신고 처리 결과 메일 받은 횟수 배열에 담기
+        for(int i=0 ; i<id_list.length ; i++){
+            for(int j=0 ; j<suspensionList.size() ; j++){
+                if(reportIdArr[i][suspensionList.get(j)] > 0)
+                    answer[i]++;
+            }
+        }
+        
+        return answer;
+    }
+}
