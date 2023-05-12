@@ -1,0 +1,56 @@
+import java.util.*;
+class Solution {
+    public String solution(int[] numbers, String hand) {
+        String answer = "";
+        Map<Integer, String> numsmap = new HashMap<>();
+        numsmap.put(0,"31");
+        numsmap.put(1,"00");
+        numsmap.put(2,"01");
+        numsmap.put(3,"02");
+        numsmap.put(4,"10");
+        numsmap.put(5,"11");
+        numsmap.put(6,"12");
+        numsmap.put(7,"20");
+        numsmap.put(8,"21");
+        numsmap.put(9,"22");
+        
+        String left = "30"; //현재 left 위치
+        String right = "32"; //현재 right 위치
+        for(int i=0 ; i<numbers.length ; i++){
+            int n = numbers[i];
+            
+            if(n == 1 || n == 4 || n == 7){
+                answer += "L";
+                left = numsmap.get(n);
+            }else if(n == 3 || n == 6 || n == 9){
+                answer += "R";
+                right = numsmap.get(n);
+            }else{
+                int ni = numsmap.get(n).charAt(0) - '0';
+                int nj = numsmap.get(n).charAt(1) - '0';
+                int li = left.charAt(0) - '0';
+                int lj = left.charAt(1) - '0';
+                int ri = right.charAt(0) - '0';
+                int rj = right.charAt(1) - '0';
+                
+                if(Math.abs(li-ni)+Math.abs(lj-nj) > Math.abs(ri-ni)+Math.abs(rj-nj)){
+                    answer += "R";
+                    right = numsmap.get(n);
+                }else if(Math.abs(li-ni)+Math.abs(lj-nj) < Math.abs(ri-ni)+Math.abs(rj-nj)){
+                    answer += "L";
+                    left = numsmap.get(n);
+                }else{
+                    if(hand.equals("left")){
+                        answer += "L";
+                        left = numsmap.get(n);
+                    }else{
+                        answer += "R";
+                        right = numsmap.get(n);
+                    }
+                }
+            }
+        }
+        
+        return answer;
+    }
+}
