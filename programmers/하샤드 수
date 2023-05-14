@@ -1,0 +1,15 @@
+class Solution {
+    public boolean solution(int x) {
+        boolean answer = true;
+        int tempx = x;
+        int sum = tempx % 10;
+        while(tempx >= 10){
+            tempx /= 10;
+            sum += (tempx % 10);
+        }
+        if(x % sum != 0)
+            answer = false;
+        
+        return answer;
+    }
+}
