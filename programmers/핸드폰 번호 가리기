@@ -1,0 +1,9 @@
+class Solution {
+    public String solution(String phone_number) {
+        StringBuilder answer = new StringBuilder();
+        String star = "*";
+        answer.append(star.repeat(phone_number.length() - 4));
+        answer.append(phone_number.substring(phone_number.length() - 4));
+        return answer.toString();
+    }
+}
