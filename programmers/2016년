@@ -1,0 +1,17 @@
+class Solution {
+    public String solution(int a, int b) {
+        String answer = "";
+        int[] day = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        String[] daysOfTheWeek = {"THU", "FRI","SAT","SUN","MON","TUE","WED"};
+
+        int total = b;
+        for(int i=1 ; i<a ; i++){
+            total += day[i];
+        }
+
+        int idx = total % 7 ;
+        answer = daysOfTheWeek[idx];
+
+        return answer;
+    }
+}
