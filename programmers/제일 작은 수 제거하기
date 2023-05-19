@@ -1,0 +1,17 @@
+import java.util.*;
+class Solution {
+    public int[] solution(int[] arr) {
+        if(arr.length == 1) return new int[] {-1};
+        
+        int[] answer = new int[arr.length-1];
+        int[] copyarr = Arrays.copyOf(arr,arr.length);
+        Arrays.sort(copyarr);
+        int smallest = copyarr[0];
+        int idx = 0;
+        for(int i : arr){
+            if(smallest == i) continue;
+            answer[idx++] = i;
+        }
+        return answer;
+    }
+}
