@@ -1,0 +1,14 @@
+import java.util.*;
+class Solution {
+    public long solution(long n) {
+        long answer = 0;
+        String[] nstring = String.valueOf(n).split("");
+        Arrays.sort(nstring);
+        StringBuilder sb = new StringBuilder();
+        for(String s : nstring){
+            sb.append(s);
+        }
+        answer = Long.parseLong(sb.reverse().toString());
+        return answer;
+    }
+}
