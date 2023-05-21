@@ -1,0 +1,19 @@
+class Solution {
+    public String solution(String s, int n) {
+        StringBuilder answer = new StringBuilder();
+        String capital = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String small = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
+        String[] sarr = s.split("");
+        for(int i=0 ; i<sarr.length ; i++){
+            if(sarr[i].equals(" ")) 
+                answer.append(" ");
+            else if(capital.contains(sarr[i])){
+                answer.append(capital.substring(capital.indexOf(sarr[i]) + n,capital.indexOf(sarr[i]) + n + sarr[i].length()));
+            }else{
+                answer.append(small.substring(small.indexOf(sarr[i]) + n,small.indexOf(sarr[i]) + n + sarr[i].length()));
+            }
+        }
+        
+        return answer.toString();
+    }
+}
