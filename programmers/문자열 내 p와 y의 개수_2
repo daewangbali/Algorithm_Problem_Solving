@@ -1,0 +1,11 @@
+class Solution {
+    boolean solution(String s) {
+        boolean answer = true;
+        
+        int leng = s.replaceAll("[Pp]","").length() - s.replaceAll("[Yy]","").length();
+        
+        if(leng != 0)
+            answer = false;
+        return answer;
+    }
+}
