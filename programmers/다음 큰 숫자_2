@@ -1,0 +1,14 @@
+class Solution {
+    public int solution(int n) {
+        int answer = n + 1;
+        int ncnt = Integer.bitCount(n);
+        while(true){
+            int cmpCnt = Integer.bitCount(answer);
+            if(ncnt == cmpCnt)
+                break;
+            answer++;
+        }
+        
+        return answer;
+    }
+}
