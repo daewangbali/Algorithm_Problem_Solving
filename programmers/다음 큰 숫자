@@ -1,0 +1,14 @@
+class Solution {
+    public int solution(int n) {
+        int answer = n + 1;
+        int nleng = Integer.toString(n,2).replace("0","").length();
+        while(true){
+            int n2leng = Integer.toString(answer,2).replace("0","").length();
+            if(nleng == n2leng)
+                break;
+            answer++;
+        }
+
+        return answer;
+    }
+}
