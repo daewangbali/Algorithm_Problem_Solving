@@ -1,0 +1,19 @@
+import java.util.*;
+
+class Solution {
+    public String solution(String s) {
+        StringBuilder answer = new StringBuilder();
+        StringTokenizer st = new StringTokenizer(s);
+        int maxn = Integer.MIN_VALUE;
+        int minn = Integer.MAX_VALUE;
+        
+        while(st.hasMoreTokens()){
+            int num = Integer.parseInt(st.nextToken());
+            maxn = Math.max(maxn,num);
+            minn = Math.min(minn,num);
+        }
+        
+        answer.append(minn).append(" ").append(maxn);
+        return answer.toString();
+    }
+}
