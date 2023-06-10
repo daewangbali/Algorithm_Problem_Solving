@@ -1,0 +1,19 @@
+import java.util.*;
+
+class Solution {
+    public String solution(String s) {
+        StringBuilder answer = new StringBuilder();
+        String[] sarr = s.split(" ");
+        int maxn = Integer.MIN_VALUE;
+        int minn = Integer.MAX_VALUE;
+        
+        for(int i=0 ; i<sarr.length ; i++){
+            int num = Integer.parseInt(sarr[i]);
+            maxn = Math.max(maxn,num);
+            minn = Math.min(minn,num);
+        }
+        
+        answer.append(minn).append(" ").append(maxn);
+        return answer.toString();
+    }
+}
