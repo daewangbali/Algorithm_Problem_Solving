@@ -1,0 +1,31 @@
+class Solution {
+    public String solution(String s) {
+        StringBuilder answer = new StringBuilder();
+        boolean flag = false;
+        if(s.charAt(s.length()-1) == ' ')
+            flag = true;
+        String[] sarr = s.split(" ");
+
+        for(int i=0 ; i<sarr.length ; i++){
+            String now = sarr[i].toLowerCase();
+            if(now.length() == 0){
+                answer.append(" ");
+                continue;
+            }
+
+            if(now.charAt(0) - '0' >= 0 && now.charAt(0) - '0' <= 9){
+                answer.append(now);
+            }else{
+                answer.append(now.substring(0,1).toUpperCase());
+                answer.append(now.substring(1));
+            }
+
+            if(i != sarr.length-1)
+                answer.append(" ");
+        }
+        if(flag == true)
+            answer.append(" ");
+
+        return answer.toString();
+    }
+}
