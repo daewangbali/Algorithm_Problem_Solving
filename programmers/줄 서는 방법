@@ -1,0 +1,24 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int n, long k) {
+        int[] answer = new int[n];
+        ArrayList<Integer> list = new ArrayList<>();
+        long facto = 1;
+        for(int i=1 ; i<=n ; i++){
+            list.add(i);
+            facto *= i;
+        }
+        
+        k--;
+        int idx = 0;
+        while(n > 0) {
+            facto /= n;
+            answer[idx++] = list.get((int)(k / facto));
+            list.remove((int)(k / facto));
+            k %= facto;
+            n--;
+        }
+        return answer;
+    }
+}
