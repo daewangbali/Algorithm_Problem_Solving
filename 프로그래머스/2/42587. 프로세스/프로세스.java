@@ -10,7 +10,7 @@ class Solution {
         
         Collections.sort(q);
         
-        while(answer < priorities.length){
+        while(q.size() > 0){
 
             for(int i=0 ; i<priorities.length ; i++){
                 if(q.get(0) == 10-priorities[i]){
