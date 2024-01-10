@@ -3,23 +3,25 @@ import java.util.*;
 class Solution {
     public int solution(int[] priorities, int location) {
         int answer = 0;
-        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        LinkedList<Integer> q = new LinkedList<>();
         for(int i=0 ; i<priorities.length ; i++){
-            queue.offer(10 - priorities[i]);
+            q.add(10 - priorities[i]);
         }
         
-        while(!queue.isEmpty()){
-            for (int i = 0; i < priorities.length; i++) {
-                if (queue.peek() == 10-priorities[i]) {
-                    queue.poll();
-                    answer++;
+        Collections.sort(q);
+        
+        while(answer < priorities.length){
 
-                    if (location == i) {
-                        return answer;
-                    }
+            for(int i=0 ; i<priorities.length ; i++){
+                if(q.get(0) == 10-priorities[i]){
+                    answer++;
+                    q.remove(0);
+                    
+                    if(location == i) return answer;
                 }
             }
         }
+        
         return answer;
     }
 }
