@@ -9,6 +9,7 @@ class Solution {
             int k = commands[idx][2];
             
             int[] tmp = Arrays.copyOfRange(array, i, j);
+            
             Arrays.sort(tmp);
             answer[idx] = tmp[k-1];
         }
