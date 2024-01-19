@@ -1,14 +1,17 @@
 import java.util.*;
+
 class Solution {
     public int[] solution(int[] arr, int[] query) {
-        int[] answer = Arrays.copyOf(arr, arr.length);
-        for(int i=0 ; i<query.length ; i++){
-            if(i % 2 == 0){
-                answer = Arrays.copyOf(answer,query[i] + 1);
-            }else{
-                answer = Arrays.copyOfRange(answer,query[i], answer.length);
+        int start = 0;
+        int end = arr.length - 1;
+        for (int i = 0; i < query.length; i++) {
+            if (i % 2 == 0) {
+                end = start + query[i] - 1;
+            } else {
+                start += query[i];
             }
         }
-        return answer;
+
+        return Arrays.copyOfRange(arr, start, end + 2);
     }
 }
