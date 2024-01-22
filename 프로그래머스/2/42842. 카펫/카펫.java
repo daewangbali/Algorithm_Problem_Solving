@@ -5,14 +5,11 @@ class Solution {
         int[] answer = new int[2];
         List<Integer> list = new ArrayList<>();
         
-        for(int i=2 ; i<=Math.sqrt(yellow) ; i++){
+        for(int i=1 ; i<=Math.sqrt(yellow) ; i++){
             if((yellow / i) != 0){
                 list.add(i);
             }
         }
-        
-        if(list.size() == 0)
-            return new int[] {yellow + 2 , 3};
         
         for(int i=0 ; i<list.size() ; i++){
             int w = yellow / list.get(i);
