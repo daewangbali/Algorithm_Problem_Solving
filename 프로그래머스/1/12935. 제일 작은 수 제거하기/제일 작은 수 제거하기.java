@@ -6,12 +6,14 @@ class Solution {
 
         int[] narr = Arrays.copyOf(arr, arr.length);
         Arrays.sort(arr);
-        List<Integer> list = new ArrayList<>();
-        for(int i=0; i<narr.length ; i++){
-            if(narr[i] != arr[0])
-                list.add(narr[i]);
+        
+        int[] answer = new int[arr.length-1];
+        int idx = 0;
+        for(int i : narr){
+            if(i != arr[0])
+                answer[idx++] = i;
         }
         
-        return list.stream().mapToInt(i->i).toArray();
+        return answer;
     }
 }
