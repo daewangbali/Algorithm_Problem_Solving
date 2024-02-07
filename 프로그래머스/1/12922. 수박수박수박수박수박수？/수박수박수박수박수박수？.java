@@ -1,9 +1,10 @@
 class Solution {
     public String solution(int n) {
         StringBuilder answer = new StringBuilder();
-        for(int i=0 ; i<n ; i++){
-            answer.append(i % 2 == 0 ? "수" : "박");
-        }
+        String s = "수박";
+        answer.append(s.repeat(n / 2));
+        if(n % 2 != 0) 
+            answer.append("수");   
         return answer.toString();
     }
 }
